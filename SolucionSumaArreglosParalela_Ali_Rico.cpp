@@ -16,7 +16,7 @@ void imprimeArreglo(float *d);
 int main() {
     //quiero probar diferentes valores de b[i], entonces agregaré una semilla aleatoria
     srand(time(0));
-    //std::cout << "Sumando arreglos en paralelo\n";
+    std::cout << "Sumando arreglos en paralelo\n";
     
     float a[N], b[N], c[N];
     int i;
