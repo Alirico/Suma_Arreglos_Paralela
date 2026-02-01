@@ -1,26 +1,33 @@
 // --- Crear el proyecto en VS y configurarlo para utilizar OpenMP ---
 #include <iostream>
 #include <omp.h>    // agregar la librería esencial para OpenMP
+#include <cstdlib>   // Para rand() y srand() y poder asignar valores aleatorios a "A" 
+#include <ctime>     // Para time()
 
 
 #define N 1000      // cantidad de elementos a manejar en los arreglos
 #define chunk 100   // tamaño que tendrán los pedazos de los arreglos para que cada hilo creado se encargue de esta cantidad de elementos
-#define mostrar 10  // Permitirá manejar la cantidad de datos a imprimir
+#define mostrar 20  // Permitirá manejar la cantidad de datos a imprimir
 
 //La creación de las constantes y del prototipo de la función
 void imprimeArreglo(float *d);
 
 // --- Crear los arreglos y asignarles valores ---
 int main() {
-    std::cout << "Sumando arreglos en paralelo\n";
+    //quiero probar diferentes valores de b[i], entonces agregaré una semilla aleatoria
+    srand(time(0));
+    //std::cout << "Sumando arreglos en paralelo\n";
     
     float a[N], b[N], c[N];
     int i;
+    // Aquí voy a generar el número aleatorio entre 2 y 5
+    int num_aleatorio = (rand() % 4)+2;
+
 
     for (i = 0; i < N; i++) 
     {
         a[i] = i*10;
-        b[i] = (i+3) * 3.7;
+        b[i] = (i+num_aleatorio) * 3.7;
     }
     int pedazos=chunk;
 
